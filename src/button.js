@@ -1,7 +1,7 @@
 //exemplo de PropChildren (este componente e também o Like Button)
 //e também exemplo de composição junto do Like Button
 //Exemplo também de componentes Stateless (igual ao square.js),
-//por serem funções puras (que usam o arrowFunction)
+//por serem componentes de funções puras (que usam o arrowFunction)
 'use strict'
 
 import React from 'react'
@@ -11,5 +11,9 @@ const Button = ({ children, handleClick }) => (
 		{children}
 	</button>
 )
+
+Button.propTypes = {
+	handleClick: React.PropTypes.func.isRequired
+}
 
 export default Button

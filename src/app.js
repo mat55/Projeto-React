@@ -1,22 +1,33 @@
 'use strict'
 
-import React,  { Component } from 'react'
+import React, { Component } from 'react'
 
-//componente criado como uma classe (componente statefull [por ser classe e estender])
+//componente criado como uma classe (componente stateful [por ser classe e estender])
 class App extends Component {
 	constructor() {
-	  super()	
+	  super()
+	
 	  this.state = {
-		text: 'Matheus'	
+	  	checked: false,
+	  	showContent: false
 	  }
 	}
 
 	render () {
 		return (
-			<div className='container' onClick={() => this.setState({
-				text: 'Campos'
-			})}>
-			  {this.state.text}
+			<div>
+				<label>
+					<input type="checkbox" checked={this.state.checked}
+						onChange={() => {
+							this.setState ({checked: !this.state.checked},
+							() => {
+								this.setState ({showContent: this.state.checked})
+							})
+						}} 
+					/> Mostrar conteúdo
+				</label>
+
+				{this.state.showContent &&<div>Olha eu aqui!!!</div>}
 			</div>
 		)
 	}

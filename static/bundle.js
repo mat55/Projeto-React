@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3876b9418503e091b892"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6c583c105e0361267928"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -18238,7 +18238,7 @@
 	    return;
 	  }
 	
-	  __REACT_HOT_LOADER__.register(renderApp, 'renderApp', 'C:/Projetos/ReactAulas/src/index.js');
+	  __REACT_HOT_LOADER__.register(renderApp, 'renderApp', 'C:/Projetos/Projeto-React/src/index.js');
 	})();
 
 	;
@@ -40203,6 +40203,10 @@
 	
 	var _square2 = _interopRequireDefault(_square);
 	
+	var _timer = __webpack_require__(430);
+	
+	var _timer2 = _interopRequireDefault(_timer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40211,37 +40215,50 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//componente criado como uma classe (componente statefull [por ser classe e estender])
+	//componente criado como uma classe (componente stateful [por ser classe e estender])
 	var App = function (_Component) {
 		_inherits(App, _Component);
 	
 		function App() {
 			_classCallCheck(this, App);
 	
+			console.log('constructor app');
+	
 			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 	
 			_this.state = {
-				color: 'green'
+				time: 0
 			};
 			return _this;
 		}
 	
 		_createClass(App, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				console.log('componentWillMount app');
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				console.log('componentDidMount app');
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var _this2 = this;
 	
+				console.log('render app');
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_square2.default, { color: this.state.color }),
-					['red', 'green', 'blue'].map(function (color) {
-						return _react2.default.createElement(_button2.default, {
-							key: color,
-							handleClick: function handleClick() {
-								return _this2.setState({ color: color });
-							} });
-					})
+					_react2.default.createElement(_timer2.default, { time: this.state.time }),
+					_react2.default.createElement(
+						'button',
+						{ onClick: function onClick() {
+								_this2.setState({ time: _this2.state.time + 10 });
+							} },
+						'Change props '
+					)
 				);
 			}
 		}]);
@@ -40269,9 +40286,9 @@
 			return;
 		}
 	
-		__REACT_HOT_LOADER__.register(App, 'App', 'C:/Projetos/ReactAulas/src/app.js');
+		__REACT_HOT_LOADER__.register(App, 'App', 'C:/Projetos/Projeto-React/src/app.js');
 	
-		__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Projetos/ReactAulas/src/app.js');
+		__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Projetos/Projeto-React/src/app.js');
 	})();
 
 	;
@@ -40315,9 +40332,9 @@
 			return;
 		}
 	
-		__REACT_HOT_LOADER__.register(Button, 'Button', 'C:/Projetos/ReactAulas/src/button.js');
+		__REACT_HOT_LOADER__.register(Button, 'Button', 'C:/Projetos/Projeto-React/src/button.js');
 	
-		__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Projetos/ReactAulas/src/button.js');
+		__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Projetos/Projeto-React/src/button.js');
 	})();
 
 	;
@@ -40361,9 +40378,113 @@
 			return;
 		}
 	
-		__REACT_HOT_LOADER__.register(Square, 'Square', 'C:/Projetos/ReactAulas/src/square.js');
+		__REACT_HOT_LOADER__.register(Square, 'Square', 'C:/Projetos/Projeto-React/src/square.js');
 	
-		__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Projetos/ReactAulas/src/square.js');
+		__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Projetos/Projeto-React/src/square.js');
+	})();
+
+	;
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(6);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Timer = function (_Component) {
+		_inherits(Timer, _Component);
+	
+		function Timer() {
+			_classCallCheck(this, Timer);
+	
+			console.log('constructor timer');
+	
+			var _this = _possibleConstructorReturn(this, (Timer.__proto__ || Object.getPrototypeOf(Timer)).call(this));
+	
+			_this.state = {
+				time: 0
+			};
+			_this.timer;
+			return _this;
+		}
+	
+		_createClass(Timer, [{
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				console.log('componentWillReceiveProps timer', this.props, nextProps);
+			}
+	
+			// shouldComponentUpdate (nextProps, nextState) {
+			// 	console.log('shouldComponentUpdate timer', this.state, nextState)
+			// 	return this.props.time !== nextProps.time
+			// }
+	
+		}, {
+			key: 'compnentWillUpdate',
+			value: function compnentWillUpdate(nextProps, nextState) {
+				console.log('compnentWillUpdate timer', this.props, nextProps);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
+	
+				this.timer = setInterval(function () {
+					_this2.setState({
+						time: _this2.state.time + 1
+					});
+				}, 1000);
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				clearInterval(this.timer);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					'Timer: ',
+					this.state.time
+				);
+			}
+		}]);
+	
+		return Timer;
+	}(_react.Component);
+	
+	var _default = Timer;
+	exports.default = _default;
+	;
+	
+	(function () {
+		if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+			return;
+		}
+	
+		__REACT_HOT_LOADER__.register(Timer, 'Timer', 'C:/Projetos/Projeto-React/src/timer.js');
+	
+		__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Projetos/Projeto-React/src/timer.js');
 	})();
 
 	;
